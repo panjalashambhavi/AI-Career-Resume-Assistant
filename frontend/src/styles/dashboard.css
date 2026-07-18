@@ -1,0 +1,156 @@
+/* src/styles/dashboard.css */
+
+.dashboard {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #ececec;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(79, 70, 229, 0.18);
+}
+
+.dashboard-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.progress-wrapper {
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 25px;
+}
+
+.ats-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #16a34a;
+  margin-bottom: 25px;
+}
+
+.success-icon {
+  font-size: 22px;
+}
+
+.score-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.score-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.score-item span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.score-item progress {
+  width: 100%;
+  height: 12px;
+  appearance: none;
+}
+
+.score-item progress::-webkit-progress-bar {
+  background: #e5e7eb;
+  border-radius: 20px;
+}
+
+.score-item progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  border-radius: 20px;
+}
+
+.score-item progress::-moz-progress-bar {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+}
+
+.summary-card,
+.strength-card,
+.weakness-card,
+.skills-card,
+.suggestion-card,
+.interview-card {
+  line-height: 1.8;
+}
+
+.summary-card p {
+  color: #4b5563;
+  font-size: 16px;
+}
+
+.strength-card ul,
+.weakness-card ul,
+.suggestion-card ul,
+.interview-card ol {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.strength-card li,
+.weakness-card li,
+.suggestion-card li,
+.interview-card li {
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-chip {
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.skill-chip:hover {
+  background: #4f46e5;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+}

@@ -1,0 +1,62 @@
+import { motion } from "framer-motion";
+import { FaRobot, FaFileAlt, FaCheckCircle } from "react-icons/fa";
+import "./hero.css";
+
+export default function Hero() {
+  return (
+    <section className="hero" id="home">
+      <motion.div
+        className="hero-content"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="hero-icon">
+          <FaRobot />
+        </div>
+
+        <h1>
+          AI Career <span>Resume Assistant</span>
+        </h1>
+
+        <p>
+          Upload your resume and receive an AI-powered ATS score,
+          personalized feedback, missing skills, resume improvements,
+          and interview questions in seconds.
+        </p>
+
+        <div className="hero-buttons">
+          <a href="#upload" className="primary-btn">
+            Analyze Resume
+          </a>
+
+          <a href="#results" className="secondary-btn">
+            View Demo
+          </a>
+        </div>
+
+        <div className="hero-stats">
+
+          <div className="stat-card">
+            <FaFileAlt />
+            <h3>100%</h3>
+            <p>ATS Analysis</p>
+          </div>
+
+          <div className="stat-card">
+            <FaCheckCircle />
+            <h3>Instant</h3>
+            <p>AI Feedback</p>
+          </div>
+
+          <div className="stat-card">
+            <FaRobot />
+            <h3>Gemini AI</h3>
+            <p>Powered</p>
+          </div>
+
+        </div>
+      </motion.div>
+    </section>
+  );
+}

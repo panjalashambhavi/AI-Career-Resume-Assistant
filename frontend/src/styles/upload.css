@@ -1,0 +1,144 @@
+
+.upload-section{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+}
+
+.upload-card{
+    width:100%;
+    max-width:750px;
+    background:#ffffff;
+    border-radius:24px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    text-align:center;
+}
+
+.upload-main-icon{
+    font-size:70px;
+    color:#2563eb;
+    margin-bottom:20px;
+}
+
+.upload-card h2{
+    color:#1e3a8a;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.upload-card p{
+    color:#6b7280;
+    margin-bottom:30px;
+}
+
+.upload-dropzone{
+    display:block;
+    border:3px dashed #60a5fa;
+    border-radius:18px;
+    padding:40px 20px;
+    cursor:pointer;
+    transition:.3s;
+    background:#f8fbff;
+}
+
+.upload-dropzone:hover{
+    border-color:#2563eb;
+    background:#eef6ff;
+}
+
+.upload-dropzone input{
+    display:none;
+}
+
+.dropzone-content svg{
+    font-size:55px;
+    color:#2563eb;
+    margin-bottom:18px;
+}
+
+.dropzone-content h3{
+    color:#1f2937;
+    margin-bottom:10px;
+}
+
+.dropzone-content span{
+    color:#6b7280;
+}
+
+.selected-file{
+    margin-top:25px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:16px;
+    border-radius:14px;
+    background:#f3f4f6;
+    text-align:left;
+}
+
+.file-icon{
+    font-size:40px;
+}
+
+.pdf{
+    color:#dc2626;
+}
+
+.doc{
+    color:#2563eb;
+}
+
+.file-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.file-info strong{
+    color:#111827;
+}
+
+.file-info small{
+    color:#6b7280;
+}
+
+.analyze-btn{
+    margin-top:30px;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#2563eb;
+    color:#fff;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.analyze-btn:hover:not(:disabled){
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+.analyze-btn:disabled{
+    background:#93c5fd;
+    cursor:not-allowed;
+}
+
+@media(max-width:768px){
+    .upload-card{
+        padding:25px;
+    }
+
+    .selected-file{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .upload-card h2{
+        font-size:1.6rem;
+    }
+}
