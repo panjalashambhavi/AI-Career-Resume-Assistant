@@ -53,10 +53,11 @@ export default function App() {
     try {
       setLoading(true);
 
+      const API_URL = import.meta.env.VITE_API_URL;
       const res = await axios.post(
-        "http://127.0.0.1:8000/upload",
-        formData
-      );
+      `${API_URL}/upload`,
+      formData
+    );
 
       setAnalysis(res.data.analysis);
     } catch (err) {
