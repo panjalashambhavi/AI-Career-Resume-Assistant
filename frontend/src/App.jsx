@@ -53,13 +53,30 @@ export default function App() {
     try {
       setLoading(true);
 
-      const API_URL = import.meta.env.VITE_API_URL;
-      const res = await axios.post(
-      `${API_URL}/upload`,
-      formData
-    );
+      const API_URL =
+  (
+    import.meta.env.VITE_API_URL ||
+    "https://ai-career-resume-assistant-production.up.railway.app"
+  ).replace(/\/+$/, "");
 
-      setAnalysis(res.data.analysis);
+const FINAL_URL = `${API_URL}/upload`;
+
+console.log("API_URL =", API_URL);
+console.log("Final URL =", FINAL_URL);
+
+const res = await axios.post(
+  FINAL_URL,
+  formData,
+  {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+);
+
+console.log("Response =", res.data);
+
+setAnalysis(res.data.analysis);
     } catch (err) {
       console.error(err);
       alert("Error analyzing resume.");
