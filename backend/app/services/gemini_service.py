@@ -11,7 +11,6 @@ client = genai.Client(
 )
 
 def analyze_resume(resume_text):
-
     prompt = f"""
 You are an expert ATS Resume Analyzer.
 
@@ -35,7 +34,6 @@ Resume:
 """
 
     try:
-
         response = client.models.generate_content(
             model="gemini-2.5-pro",
             contents=prompt
@@ -49,14 +47,14 @@ Resume:
         return json.loads(text)
 
     except Exception as e:
-    traceback.print_exc()
+        traceback.print_exc()
 
-    return {
-        "summary": str(e),
-        "ats_score": 0,
-        "strengths": [],
-        "weaknesses": [str(e)],
-        "missing_skills": [],
-        "suggestions": [],
-        "interview_questions": []
-    }
+        return {
+            "summary": str(e),
+            "ats_score": 0,
+            "strengths": [],
+            "weaknesses": [str(e)],
+            "missing_skills": [],
+            "suggestions": [],
+            "interview_questions": []
+        }
