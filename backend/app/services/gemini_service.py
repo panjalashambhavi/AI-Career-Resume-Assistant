@@ -1,4 +1,6 @@
 import os
+import json
+import traceback
 from dotenv import load_dotenv
 from google import genai
 
@@ -9,28 +11,51 @@ client = genai.Client(
 )
 
 def analyze_resume(resume_text):
+
+    prompt = f"""
+You are an expert ATS Resume Analyzer.
+
+Analyze the resume and return ONLY valid JSON.
+
+Return exactly this format:
+
+{{
+  "summary":"Professional summary",
+  "ats_score":85,
+  "strengths":["","",""],
+  "weaknesses":["","",""],
+  "missing_skills":["","",""],
+  "suggestions":["","",""],
+  "interview_questions":["","","","",""]
+}}
+
+Resume:
+
+{resume_text}
+"""
+
     try:
-        models = []
 
-        for model in client.models.list():
-            models.append(model.name)
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
+
+        text = response.text.strip()
+
+        if text.startswith("```json"):
+            text = text.replace("```json", "").replace("```", "").strip()
+
+        return json.loads(text)
+
+    except Exception:
+        traceback.print_exc()
 
         return {
-            "summary": "Available Models",
-            "ats_score": 100,
-            "strengths": models,
-            "weaknesses": [],
-            "missing_skills": [],
-            "suggestions": [],
-            "interview_questions": []
-        }
-
-    except Exception as e:
-        return {
-            "summary": str(e),
+            "summary": "Unable to analyze resume.",
             "ats_score": 0,
             "strengths": [],
-            "weaknesses": [str(e)],
+            "weaknesses": ["Gemini API Error"],
             "missing_skills": [],
             "suggestions": [],
             "interview_questions": []
