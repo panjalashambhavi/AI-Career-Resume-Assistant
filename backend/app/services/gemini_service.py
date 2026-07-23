@@ -48,15 +48,15 @@ Resume:
 
         return json.loads(text)
 
-    except Exception:
-        traceback.print_exc()
+    except Exception as e:
+    traceback.print_exc()
 
-        return {
-            "summary": "Unable to analyze resume.",
-            "ats_score": 0,
-            "strengths": [],
-            "weaknesses": ["Gemini API Error"],
-            "missing_skills": [],
-            "suggestions": [],
-            "interview_questions": []
-        }
+    return {
+        "summary": str(e),
+        "ats_score": 0,
+        "strengths": [],
+        "weaknesses": [str(e)],
+        "missing_skills": [],
+        "suggestions": [],
+        "interview_questions": []
+    }
