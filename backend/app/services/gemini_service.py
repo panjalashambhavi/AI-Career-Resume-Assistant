@@ -47,14 +47,25 @@ Resume:
         return json.loads(text)
 
     except Exception as e:
-        traceback.print_exc()
+    error = str(e)
 
+    if "RESOURCE_EXHAUSTED" in error:
         return {
-            "summary": str(e),
+            "summary": "AI service is temporarily busy. Please try again after one minute.",
             "ats_score": 0,
             "strengths": [],
-            "weaknesses": [str(e)],
+            "weaknesses": ["Gemini free quota exceeded."],
             "missing_skills": [],
             "suggestions": [],
             "interview_questions": []
         }
+
+    return {
+        "summary": error,
+        "ats_score": 0,
+        "strengths": [],
+        "weaknesses": [error],
+        "missing_skills": [],
+        "suggestions": [],
+        "interview_questions": []
+    }
